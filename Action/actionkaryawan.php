@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Branch &mdash; U N I O N .</title>
+  <title>Karyawan &mdash; U N I O N .</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="../Template/dist/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -31,16 +31,19 @@
 <!-- /END GA --></head>
 
 <body>
-  <?php
+<?php
  include_once("../Configure/connection.php");
   
-  if(isset($_POST['editbranch'])) {
+  if(isset($_POST['editkaryawan'])) {
 
 
-    $idbranch3 = $_POST['idbranch'];
-    $namabranch = $_POST['namabranch'];
-    $codebranch = $_POST['codebranch'];
-    $alamatbranch = $_POST['alamatbranch'];
+    $idkaryawan3 = $_POST['idkaryawan'];
+    $iddepartment3 = $_POST['iddepartment'];
+    $idbranch3= $_POST['idbranch'];
+    $idbank3 = $_POST['idbank'];
+    $namakaryawan= $_POST['namakaryawan'];
+    $alamatkaryawan= $_POST['alamatkaryawan'];
+
 
     // include database connection file
     
@@ -48,7 +51,7 @@
     // Insert user data into table
 
 try { 
-   $query = "UPDATE branch SET nama_branch='$namabranch',code_branch='$codebranch',alamat_branch='$alamatbranch' WHERE id_branch = $idbranch3;";
+   $query = "UPDATE karyawan SET nama_karyawan='$namakaryawan',alamat_karyawan='$alamatkaryawan' WHERE id_bank = $idbank3;";
    $result = mysqli_query($db, $query); 
 } catch (mysqli_sql_exception $e) { 
   var_dump($e);
@@ -57,11 +60,11 @@ try {
 } 
 echo "<script>Swal.fire({
     title: 'Success!',
-    text: 'Successfully Edit Branch',
+    text: 'Successfully Edit Karyawan',
     icon: 'success',
     confirmButtonText: 'Cool!'
     })</script>";
-    header( "refresh:3;url=../Show/showbranch.php" );
+    header( "refresh:3;url=../Show/showkaryawan.php" );
 }
 ?>
 

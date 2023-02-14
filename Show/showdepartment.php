@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Branch &mdash; U N I O N .</title>
+  <title>Department &mdash; U N I O N .</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="../Template/dist/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -79,8 +79,8 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-table"></i> <span>Table</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="../Show/showbank.php">Bank</a></li>
-                    <li class=active><a class="nav-link" href="../Show/showbranch.php">Branch</a></li>
-                    <li><a class="nav-link" href="../Show/showdepartment.php">Department</a></li>
+                    <li><a class="nav-link" href="../Show/showbranch.php">Branch</a></li>
+                    <li class=active><a class="nav-link" href="../Show/showdepartment.php">Department</a></li>
                     <li><a class="nav-link" href="../Show/showkaryawan.php">Karyawan</a></li>
                 </ul>
                 </li>
@@ -91,9 +91,9 @@
 <div class="main-content">
     <section class="section">
     <div class="section-header">
-        <h1>Branch</h1>
-        <div class="btntambahbranch">
-          <a class="btn btn-success ml-3 fas fa-plus" href="../Add/addbranch.php" role="button"></a>
+        <h1>Department</h1>
+        <div class="btntambahdepartment">
+          <a class="btn btn-success ml-3 fas fa-plus" href="../Add/adddepartment.php" role="button"></a>
         </div>
     </div>
     <div class="section-body">
@@ -108,10 +108,10 @@
                                     <thead>                                
                                     <tr>
                                         <th>#</th>
-                                        <th>Id Branch</th>
-                                        <th>Nama Branch</th>
-                                        <th>Code Branch</th>
-                                        <th>Alamat Branch</th>
+                                        <th>Id Department</th>
+                                        <th>Nama Department</th>
+                                        <th>Code Department</th>
+                                        <th>Alamat Department</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -121,7 +121,7 @@
                                             include_once("../Configure/connection.php");
 
                                             // Fetch all users data from database
-                                            $result = mysqli_query($db, "select * from branch");
+                                            $result = mysqli_query($db, "select * from department");
                                             
 
                                             $i = 1;
@@ -129,13 +129,13 @@
                                         while($user_data = mysqli_fetch_array($result)) {
                                             echo "<tr>";
                                             echo "<td>".$i++."</td>";
-                                            echo "<td>".$user_data[('id_branch')]."</td>";
-                                            echo "<td>".$user_data[('nama_branch')]."</td>";
-                                            echo "<td>".$user_data[('code_branch')]."</td>";
-                                            echo "<td>".$user_data[('alamat_branch')]."</td>";
-                                            echo "<td><a class='btn btn-warning fas fa-wrench' href='../Edit/editbranch.php?id_branch=$user_data[id_branch]'></a>
+                                            echo "<td>".$user_data[('id_department')]."</td>";
+                                            echo "<td>".$user_data[('nama_department')]."</td>";
+                                            echo "<td>".$user_data[('code_department')]."</td>";
+                                            echo "<td>".$user_data[('alamat_department')]."</td>";
+                                            echo "<td><a class='btn btn-warning fas fa-wrench' href='../Edit/editdepartment.php?id_department=$user_data[id_department]'></a>
                                                   &nbsp
-                                                  <a class='btn btn-danger fas fa-trash' href='../Delete/deletebranch.php?id_branch=$user_data[id_branch]'></a></td>";
+                                                  <a class='btn btn-danger fas fa-trash' href='../Delete/deletedepartment.php?id_department=$user_data[id_department]'></a></td>";
                                         }
                                         ?>
                                         

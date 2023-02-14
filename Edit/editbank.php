@@ -31,55 +31,57 @@
 <!-- /END GA --></head>
 
 <body>
-  <div id="app">
-    <div class="main-wrapper main-wrapper-1">
-      <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
-        <form class="form-inline mr-auto">
-          <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
-          </ul>
-        </form>
-        
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="../Template/dist/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="../logout.php" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+<div id="app">
+        <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg bg-dark"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <form class="form-inline mr-auto">
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                    <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+                </ul>
+            </form>
+            <ul class="navbar-nav navbar-right">
+            
+            <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                <img alt="image" src="../Template/dist/assets/img/mew.jpg" class="rounded-circle mr-1">
+                <div class="d-sm-none d-lg-inline-block">Hi, Tokisaki Kurumi</div></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                <a href="../logout.php" class="dropdown-item has-icon text-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+                </div>
+            </li>
+            </ul>
+        </nav>
+        <div class="main-sidebar sidebar-style-2">
+            <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+              <a href="#"><img src="../Template/dist/assets/img/UNION-Logo-removebg-preview.png" width="135px"></a>
             </div>
-          </li>
-        </ul>
-      </nav>
-      <div class="main-sidebar sidebar-style-2">
-        <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
-            <a href="#"><img src="../Template/dist/assets/img/UNION-Logo-removebg-preview.png" width="135px"></a>
-          </div>
-          <div class="sidebar-brand sidebar-brand-sm">
-            <a href="#"><img src="../Template/dist/assets/img/logo_rantai.57e3913a.png" width="69px"></a>
-          </div>
-          <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="../dashboard.php">General Dashboard</a></li>
-              </ul>
-            </li>
-
+            <div class="sidebar-brand sidebar-brand-sm">
+                <a href="#"><a href="#"><img src="../Template/dist/assets/img/logo_rantai.57e3913a.png" width="69px"></a></a>
+            </div>
             <ul class="sidebar-menu">
-            <li class="menu-header">Table</li>
-            <li class="dropdown active">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-table"></i><span>Table</span></a>
-              <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="showbank.php">Bank</a></li>
-              </ul>
-            </li>
-        </aside>
-      </div>
+                <li class="menu-header">Dashboard</li>
+                <li class="dropdown">
+                <a href="index.php" class="nav-link has-dropdown"><i class="fas fa-warehouse"></i><span>Dashboard</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="../dashboard.php">Show All</a></li>
+                </ul>
+                </li>
+                <li class="menu-header">Menu</li>
+                <li class="dropdown active">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-table"></i> <span>Table</span></a>
+                <ul class="dropdown-menu">
+                    <li class=active><a class="nav-link" href="../Show/showbank.php">Bank</a></li>
+                    <li><a class="nav-link" href="../Show/showbranch.php">Branch</a></li>
+                    <li><a class="nav-link" href="../Show/showdepartment.php">Department</a></li>
+                    <li><a class="nav-link" href="../Show/showkaryawan.php">Karyawan</a></li>
+                </ul>
+                </li>
+            </aside>
+        </div>
 
       <!-- Main Content -->
 
@@ -108,7 +110,7 @@
     <div class="form-group" method="POST">
         <div class="container">
         <label>Id Bank</label>
-        <input class="form-control" type="text" value="<?php echo $idbank2 ?>" name="idbank">
+        <input class="form-control" type="text" value="<?php echo $idbank2 ?>" name="idbank" readonly>
         <br>
         <label>Nama Bank</label>
         <input class="form-control" type="text" value="<?php echo $namabank ?>" name="namabank">
@@ -122,7 +124,7 @@
         <input class="btn btn-primary" type="submit" value="Update" name="editbank">
         <a href="../Show/showbank.php" class="btn btn-danger fas fa-undo-alt" type="button"></a>
     </div>
-    <form>
+    </form>
 
         </section>
       </div>

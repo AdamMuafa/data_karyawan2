@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Branch &mdash; U N I O N .</title>
+  <title>Department &mdash; U N I O N .</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="../Template/dist/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -14,14 +14,10 @@
   <link rel="stylesheet" href="../Template/dist/assets/modules/weather-icon/css/weather-icons.min.css">
   <link rel="stylesheet" href="../Template/dist/assets/modules/weather-icon/css/weather-icons-wind.min.css">
   <link rel="stylesheet" href="../Template/dist/assets/modules/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="../Template/dist/assets/modules/datatables/datatables.min.css">
-  <link rel="stylesheet" href="../Template/dist/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../Template/dist/assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="../Template/dist/assets/css/style.css">
   <link rel="stylesheet" href="../Template/dist/assets/css/components.css">
-  
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -79,85 +75,57 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-table"></i> <span>Table</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="../Show/showbank.php">Bank</a></li>
-                    <li class=active><a class="nav-link" href="../Show/showbranch.php">Branch</a></li>
-                    <li><a class="nav-link" href="../Show/showdepartment.php">Department</a></li>
+                    <li><a class="nav-link" href="../Show/showbranch.php">Branch</a></li>
+                    <li class=active><a class="nav-link" href="../Show/showdepartment.php">Department</a></li>
                     <li><a class="nav-link" href="../Show/showkaryawan.php">Karyawan</a></li>
                 </ul>
                 </li>
             </aside>
         </div>
 
-          <!-- Main Content -->
-<div class="main-content">
-    <section class="section">
-    <div class="section-header">
-        <h1>Branch</h1>
-        <div class="btntambahbranch">
-          <a class="btn btn-success ml-3 fas fa-plus" href="../Add/addbranch.php" role="button"></a>
-        </div>
+    <?php
+    include_once("../Configure/connection.php");
+
+    $iddepartment1 = $_GET['id_department'];
+    $tampiledit = mysqli_query($db,"select * from department where id_department = $iddepartment1");
+    while($user_data = mysqli_fetch_array($tampiledit))
+    {
+        $iddepartment2 = $user_data['id_department'];
+        $namadepartment = $user_data['nama_department'];
+        $codedepartment = $user_data['code_department'];
+        $alamatdepartment1 = $user_data['alamat_department'];
+    }
+ 
+    ?>
+
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Edit Department</h1>
+          </div>
+
+<form method="POST" action="../Action/actiondepartment.php">
+    <div class="form-group" method="POST">
+        <div class="container">
+        <label>Id Department</label>
+        <input class="form-control" type="text" value="<?php echo $iddepartment2 ?>" name="iddepartment" readonly>
+        <br>
+        <label>Nama Department</label>
+        <input class="form-control" type="text" value="<?php echo $namadepartment ?>" name="namadepartment">
+        <br>
+        <label>Code Department</label>
+        <input class="form-control" type="text" value="<?php echo $codedepartment ?>" name="codedepartment">
+        <br>
+        <label>Alamat Department</label>
+        <input class="form-control" type="text" value="<?php echo $alamatdepartment1 ?>" name="alamatdepartment">
+        <br>
+        <input class="btn btn-primary" type="submit" value="Update" name="editdepartment">
+        <a href="../Show/showdepartment.php" class="btn btn-danger fas fa-undo-alt" type="button"></a>
     </div>
-    <div class="section-body">
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="table-1">
-                                    <thead>                                
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Id Branch</th>
-                                        <th>Nama Branch</th>
-                                        <th>Code Branch</th>
-                                        <th>Alamat Branch</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>                                 
-                                        <?php
+</form>
 
-                                            include_once("../Configure/connection.php");
-
-                                            // Fetch all users data from database
-                                            $result = mysqli_query($db, "select * from branch");
-                                            
-
-                                            $i = 1;
-
-                                        while($user_data = mysqli_fetch_array($result)) {
-                                            echo "<tr>";
-                                            echo "<td>".$i++."</td>";
-                                            echo "<td>".$user_data[('id_branch')]."</td>";
-                                            echo "<td>".$user_data[('nama_branch')]."</td>";
-                                            echo "<td>".$user_data[('code_branch')]."</td>";
-                                            echo "<td>".$user_data[('alamat_branch')]."</td>";
-                                            echo "<td><a class='btn btn-warning fas fa-wrench' href='../Edit/editbranch.php?id_branch=$user_data[id_branch]'></a>
-                                                  &nbsp
-                                                  <a class='btn btn-danger fas fa-trash' href='../Delete/deletebranch.php?id_branch=$user_data[id_branch]'></a></td>";
-                                        }
-                                        ?>
-                                        
-                                    </tbody>
-                                    </table>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-</div>
-          
-  </tbody>
-</table>
-
-        </section>
-</div>
+</section>
+      </div>
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2023 <div class="bullet"></div> Design By <a href="#">U N I O N .</a>
@@ -185,15 +153,9 @@
   <script src="../Template/dist/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
   <script src="../Template/dist/assets/modules/summernote/summernote-bs4.js"></script>
   <script src="../Template/dist/assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
-  <script src="../Template/dist/assets/modules/datatables/datatables.min.js"></script>
-  <script src="../Template/dist/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../Template/dist/assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-  <script src="../Template/dist/assets/modules/jquery-ui/jquery-ui.min.js"></script>
 
   <!-- Page Specific JS File -->
   <script src="../Template/dist/assets/js/page/index-0.js"></script>
-  <script src="../Template/dist/assets/assets/js/page/bootstrap-modal.js"></script>
-  <script src="../Template/dist/assets/js/page/modules-datatables.js"></script>
   
   <!-- Template JS File -->
   <script src="../Template/dist/assets/js/scripts.js"></script>

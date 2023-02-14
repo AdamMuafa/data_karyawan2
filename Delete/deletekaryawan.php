@@ -12,24 +12,24 @@
    
     <?php
 
-    $idbranch = $_GET['id_branch'];
+    $idkaryawan = $_GET['id_karyawan'];
   
 
     include_once("../Configure/connection.php");
   
 
-     $query = "delete from branch where id_branch = $idbranch";
+     $query = "delete from karyawan where id_karyawan = $idkaryawan";
      $result = mysqli_query($db, $query); 
 
   
   
   echo "<script>Swal.fire({
       title: 'Success!',
-      text: 'Successfully Delete Branch',
+      text: 'Successfully Delete Karyawan',
       icon: 'success',
       confirmButtonText: 'Cool!'
       })</script>";
-      header( "refresh:3;url=../Show/showbranch.php" );
+      header( "refresh:3;url=../Show/showkaryawan.php" );
  
   ?>
   
